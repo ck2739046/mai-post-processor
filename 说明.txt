@@ -1,0 +1,10 @@
+ref: https://github.com/upscayl/upscayl v2.15.0
+
+编辑run.bat指令:
+   [--size]               required, size of final output image, int(200, 5000)
+   [--upscayl]         required, toggle upscayl, 0 disable 1 enable 
+   [--model]           optional, model upscayl used, default "digital-art-4x"
+   [--scale]             optional, resolution scale, int(1, 8), default "1" 
+
+对于1080p, --scale推荐选1，对于4k屏，推荐选2
+

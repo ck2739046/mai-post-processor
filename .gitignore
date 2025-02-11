@@ -1,0 +1,5 @@
+jacket_process/target
+*.exe
+*.dll
+*.png
+models
