@@ -3,3 +3,6 @@ jacket_process/target
 *.dll
 *.png
 models
+release
+build-dev.bat
+

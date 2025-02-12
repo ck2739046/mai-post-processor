@@ -84,19 +84,6 @@ fn process_image() {
     //println!("process start"); // debug
 
     // Check files and args
-    let exe_path = std::env::current_exe().expect("Failed to get executable path");
-    let parent = exe_path.parent().expect("Failed to get parent directory");
-    let output_path = parent.join("output.png");
-
-    let input_path = parent.join("input.png");
-    let white_path = parent.join("white.png");
-    let black_path = parent.join("black.png");
-    let upscayl_path = parent.join("upscayl-bin.exe");
-    if !input_path.exists() { return; }
-    if !white_path.exists() { return; }
-    if !black_path.exists() { return; }
-    if !upscayl_path.exists() { return; }
-
     let args = Args::parse();
     if args.size < 200 || args.size > 5000 { 
         eprintln!("--size must be between 200 and 5000");
@@ -111,6 +98,21 @@ fn process_image() {
         return;
     }
 
+    let exe_path = std::env::current_exe().expect("Failed to get executable path");
+    let parent = exe_path.parent().expect("Failed to get parent directory");
+    let output_path = parent.join("output.png");
+
+    let input_path = parent.join("input.png");
+    let white_path = parent.join("white.png");
+    let black_path = parent.join("black.png");
+    if !input_path.exists() { return; }
+    if !white_path.exists() { return; }
+    if !black_path.exists() { return; }
+    
+    let upscayl_path = parent.join("upscayl-bin.exe");
+    if args.upscayl == 1 {
+        if !upscayl_path.exists() { return; }
+    } // only check upscayl-bin.exe if upscayl is enabled
 
     // Load central image
     let central = if args.upscayl == 0 {
